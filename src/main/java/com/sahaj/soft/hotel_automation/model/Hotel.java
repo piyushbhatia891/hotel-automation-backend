@@ -8,7 +8,6 @@ public class Hotel {
 	public List<Floor> floors;
 	public int totalBill;
 	
-	
 	public int getHotelId() {
 		return hotelId;
 	}

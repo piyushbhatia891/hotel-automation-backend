@@ -16,7 +16,7 @@ public class ACCommands implements ICommand{
 		this.subCorridorId=subCorridorId;
 	}
 	public void command() {
-		System.out.println("switching on light");
+		System.out.println("Ac related commands");
 		switch(command){
 		case SWICTH_ON:
 			ac.swicthOn();

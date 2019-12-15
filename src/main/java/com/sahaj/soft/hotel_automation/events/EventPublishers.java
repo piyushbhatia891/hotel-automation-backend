@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sahaj.soft.hotel_automation.eventsReceiver.Observer;
 import com.sahaj.soft.hotel_automation.model.Bill;
+import com.sahaj.soft.hotel_automation.model.SensorModel;
 
 public class EventPublishers implements Subject{
 	private List<Observer> observers = new ArrayList();
@@ -19,9 +20,9 @@ public class EventPublishers implements Subject{
 		
 	}
 
-	public void notifyUpdate(Bill bill) {
+	public void notifyUpdate(SensorModel model) {
 		for(Observer observer: observers) {
-			observer.update(bill);
+			observer.update(model);
         }
 		
 	}
