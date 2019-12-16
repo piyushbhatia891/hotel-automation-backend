@@ -2,6 +2,7 @@ package com.sahaj.soft.hotel_automation.commands;
 
 import com.sahaj.soft.hotel_automation.events.EventPublishers;
 import com.sahaj.soft.hotel_automation.eventsReceiver.BillSubscriber;
+import com.sahaj.soft.hotel_automation.model.AirConditioner;
 import com.sahaj.soft.hotel_automation.model.Electronics;
 import com.sahaj.soft.hotel_automation.model.SensorModel;
 import com.sahaj.soft.hotel_automation.states.OnState;
@@ -11,21 +12,16 @@ import com.sahaj.soft.hotel_automation.utils.CommonUtilsImpl;
 public class CommandServiceImpl implements CommandService {
 
 	SensorModel sensorModel;
-	Electronics device;
-	Commands command;
 	EventPublishers publishers; 
 	BillSubscriber subscribers;
-	CommonUtils commonUtils;
+	ICommand iCommand=null;
 	public CommandServiceImpl(SensorModel model){
 		super();
-		this.command=model.getCommand();
 		this.sensorModel=model;
-		this.device=model.getDevice();
 		initializeUtilsAndObservers();
 	}
 
 	private void initializeUtilsAndObservers() {
-		this.commonUtils=new CommonUtilsImpl();
 		this.publishers=new EventPublishers();
 		this.subscribers=new BillSubscriber();
 		this.publishers.attach(subscribers);
@@ -33,19 +29,25 @@ public class CommandServiceImpl implements CommandService {
 	
 	@Override
 	public void initiateCommandForElectronicDevice() {
+		/*
+		 * TODO- Bridge pattern can be used here for different classes
+		 */
 		switch(sensorModel.device.electronicsDeviceGroup){
 			case AIR_CONDITIONER:
-				executeCommandsForAirConditioner();
+				iCommand=new ACCommands(sensorModel);
 				break;
 			case LIGHT:
-				executeCommandsForLight();
+				iCommand=new LightCommand(sensorModel);
 				break;
 			default:
 				break;
 				
 		}
+		iCommand.command();
+		//publishers.notifyUpdate(sensorModel);
+		
 	}
-
+/*
 	public  void executeCommandsForLight() {
 		switch(command){
 		case SWICTH_ON:
@@ -81,9 +83,10 @@ public class CommandServiceImpl implements CommandService {
 				checkIfDeviceCanBeSwitchedOffToKeepBillIntact();
 				retryCounts++;
 			}
-		}*/
-	}
-
+		}
+	}*/
+	
+/*
 	
 	public void executeCommandsForAirConditioner() {
 		switch(command){
@@ -95,5 +98,5 @@ public class CommandServiceImpl implements CommandService {
 			break;
 		}
 	}
-
+*/
 }

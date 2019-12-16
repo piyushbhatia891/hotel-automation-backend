@@ -1,28 +1,30 @@
 package com.sahaj.soft.hotel_automation.commands;
 
 import com.sahaj.soft.hotel_automation.model.AirConditioner;
+import com.sahaj.soft.hotel_automation.model.Electronics;
+import com.sahaj.soft.hotel_automation.model.SensorModel;
 
 public class ACCommands implements ICommand{
-
-	AirConditioner ac;
+	/*
+	 * TODO- This class can be used as a bridge pattern
+	 */
+	Electronics device;
 	Commands command;
-	public int subCorridorId;
-	public int mainCorridorId;
-	public ACCommands(AirConditioner ac,Commands command,int subCorridorId,int mainCorridorId){
+	SensorModel model=null;
+	public ACCommands(SensorModel sensorModel){
 		super();
-		this.ac=ac;
-		this.command=command;
-		this.mainCorridorId=mainCorridorId;
-		this.subCorridorId=subCorridorId;
+		this.model=sensorModel;
+		this.device=sensorModel.getDevice();
+		this.command=sensorModel.getCommand();
 	}
 	public void command() {
 		System.out.println("Ac related commands");
 		switch(command){
 		case SWICTH_ON:
-			ac.swicthOn();
+			device.swicthOn();
 			break;
 		case SWITCH_OFF:
-			ac.switchOff();
+			device.switchOff();
 			break;
 		default:
 			break;
