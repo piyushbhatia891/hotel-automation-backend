@@ -10,7 +10,7 @@ public class LightCommand implements ICommand{
 
 	
 	/*
-	 * TODO- This class can be used as a bridge pattern
+	 * This class is used as a bridge pattern
 	 */
 	Electronics device;
 	Commands command;
@@ -24,6 +24,7 @@ public class LightCommand implements ICommand{
 		this.commonUtils=new CommonUtilsImpl();
 	}
 	public void command() {
+		//Commands operation for Light
 		System.out.println("Light related commands");
 		switch(command){
 		case SWICTH_ON:

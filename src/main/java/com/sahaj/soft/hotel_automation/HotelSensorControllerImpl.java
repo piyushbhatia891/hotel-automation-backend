@@ -12,11 +12,15 @@ public class HotelSensorControllerImpl implements HotelSensorController{
 	
 	@Override
 	public void verifySensorDataAndUpdateOperationOnDevice(Floor floor, Electronics electronics,Commands command) {
+		
+		//Taking a command and executing on it based on the command
 		SensorModel model=new SensorModel();
 		model.setFloor(floor);
 		model.setCommand(command);
 		model.setDevice(electronics);
 		this.commandService=new CommandServiceImpl(model);
+		
+		// Executing operation on command
 		commandService.initiateCommandForElectronicDevice();
 	}	
 }

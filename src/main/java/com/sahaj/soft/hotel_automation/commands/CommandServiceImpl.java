@@ -30,7 +30,7 @@ public class CommandServiceImpl implements CommandService {
 	@Override
 	public void initiateCommandForElectronicDevice() {
 		/*
-		 * TODO- Bridge pattern can be used here for different classes
+		 * Bridge pattern can be used here for different classes
 		 */
 		switch(sensorModel.device.electronicsDeviceGroup){
 			case AIR_CONDITIONER:
@@ -43,6 +43,7 @@ public class CommandServiceImpl implements CommandService {
 				break;
 				
 		}
+		//Executing command for device
 		iCommand.command();
 		//publishers.notifyUpdate(sensorModel);
 		

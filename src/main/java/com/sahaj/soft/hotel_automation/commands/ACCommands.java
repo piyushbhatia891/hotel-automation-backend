@@ -6,7 +6,7 @@ import com.sahaj.soft.hotel_automation.model.SensorModel;
 
 public class ACCommands implements ICommand{
 	/*
-	 * TODO- This class can be used as a bridge pattern
+	 * This class is used as a bridge pattern
 	 */
 	Electronics device;
 	Commands command;
@@ -18,6 +18,7 @@ public class ACCommands implements ICommand{
 		this.command=sensorModel.getCommand();
 	}
 	public void command() {
+		//Commands operation for AC
 		System.out.println("Ac related commands");
 		switch(command){
 		case SWICTH_ON:
