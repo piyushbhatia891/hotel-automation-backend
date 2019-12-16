@@ -7,7 +7,11 @@ public class SubCorridor extends Corridor{
 	public int subCorridorId;
 	public List<AirConditioner> airConditioner;
 	public List<Light> light;
-	
+	public SubCorridor(int subCorridorId,List<AirConditioner> airConditioners,List<Light> lights){
+		this.subCorridorId=subCorridorId;
+		this.airConditioner=airConditioners;
+		this.light=lights;
+	}
 	public List<AirConditioner> getAirConditioner() {
 		return airConditioner;
 	}

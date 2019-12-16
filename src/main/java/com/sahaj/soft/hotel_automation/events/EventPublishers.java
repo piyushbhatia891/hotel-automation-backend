@@ -20,6 +20,7 @@ public class EventPublishers implements Subject{
 		
 	}
 
+	@Override
 	public void notifyUpdate(SensorModel model) {
 		for(Observer observer: observers) {
 			observer.update(model);

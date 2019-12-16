@@ -1,19 +1,22 @@
 package com.sahaj.soft.hotel_automation.states;
 
 public class OffState implements DeviceState{
-	//Singleton
     private static OffState instance = new OffState();
- 
+    
     private OffState() {}
  
     public static OffState instance() {
         return instance;
     }
      
-    //Business logic and state transition
+/*
+ * (non-Javadoc)
+ * @see com.sahaj.soft.hotel_automation.states.DeviceState#updateState(com.sahaj.soft.hotel_automation.states.StateContext)
+ * Updating the status of the device
+ */
     public void updateState(StateContext ctx) 
     {
-        System.out.println("Swicthing On ");
+        System.out.println("Swicthing On the device");
         ctx.setCurrentState(OnState.instance());
     }
 

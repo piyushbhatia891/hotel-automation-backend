@@ -4,27 +4,50 @@ import java.util.List;
 
 public class Hotel {
 
-	public int hotelId;
-	public List<Floor> floors;
-	public int totalBill;
-	
+	public final int hotelId;
+	public final List<Floor> floors;
+	public final int totalBill;
+
 	public int getHotelId() {
 		return hotelId;
 	}
-	public void setHotelId(int hotelId) {
-		this.hotelId = hotelId;
-	}
+	
 	public List<Floor> getFloors() {
 		return floors;
 	}
-	public void setFloors(List<Floor> floors) {
-		this.floors = floors;
-	}
+	
 	public int getTotalBill() {
 		return totalBill;
 	}
-	public void setTotalBill(int totalBill) {
-		this.totalBill = totalBill;
+	public Hotel(HotelBuilder hotelBuilder){
+		this.floors=hotelBuilder.floors;
+		this.hotelId=hotelBuilder.hotelId;
+		this.totalBill=hotelBuilder.totalBill;
+	}
+	
+	public static class HotelBuilder{
+		private final int hotelId;
+		private List<Floor> floors;
+		private int totalBill;
+		
+		public HotelBuilder(int hotelId){
+			this.hotelId=hotelId;
+		}
+		
+		public HotelBuilder floors(List<Floor> floors){
+			this.floors=floors;
+			return this;
+		}
+		
+		public HotelBuilder totalBill(int totalBill){
+			this.totalBill=totalBill;
+			return this;
+		}
+		
+		public Hotel build(){
+			Hotel hotel =  new Hotel(this);
+            return hotel;
+		}
 	}
 	
 	

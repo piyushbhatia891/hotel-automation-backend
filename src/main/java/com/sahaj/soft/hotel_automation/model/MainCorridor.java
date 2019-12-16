@@ -6,7 +6,11 @@ public class MainCorridor extends Corridor{
 	public int mainCorridorId;
 	public List<AirConditioner> airConditioner;
 	public List<Light> light;
-	
+	public MainCorridor(int mainCorridorId,List<AirConditioner> airConditioners,List<Light> lights){
+		this.mainCorridorId=mainCorridorId;
+		this.airConditioner=airConditioners;
+		this.light=lights;
+	}
 	public List<AirConditioner> getAirConditioner() {
 		return airConditioner;
 	}

@@ -4,36 +4,60 @@ import java.util.List;
 
 public class Floor {
 
-	int maximumBill;
-	public int floorId;
-	public List<MainCorridor> mainCorridors;
-	public List<SubCorridor> subCorridors;
+	public final int maximumBill;
+	public final int floorId;
+	public final List<MainCorridor> mainCorridors;
+	public final List<SubCorridor> subCorridors;
+	
+	public Floor(FloorBuilder floorBuilder){
+		this.maximumBill=floorBuilder.maximumBill;
+		this.floorId=floorBuilder.floorId;
+		this.mainCorridors=floorBuilder.mainCorridors;
+		this.subCorridors=floorBuilder.subCorridors;
+	}
+	public static class FloorBuilder{
+		private final int floorId;
+		private int maximumBill;
+		private List<MainCorridor> mainCorridors;
+		private List<SubCorridor> subCorridors;
+		
+		public FloorBuilder(int floorId){
+			this.floorId=floorId;
+		}
+		
+		public FloorBuilder maximumBill(int maximumBill){
+			this.maximumBill=maximumBill;
+			return this;
+		}
+		
+		public FloorBuilder mainCorridors(List<MainCorridor> mainCorridors){
+			this.mainCorridors=mainCorridors;
+			return this;
+		}
+		
+		public FloorBuilder subCorridors(List<SubCorridor> subCorridors){
+			this.subCorridors=subCorridors;
+			return this;
+		}
+		
+		public Floor build(){
+			Floor floor=new Floor(this);
+			return floor;
+		}
+		
+	}
 	
 	
 	public int getFloorId() {
 		return floorId;
 	}
-	public void setFloorId(int floorId) {
-		this.floorId = floorId;
-	}
 	public int getMaximumBill() {
 		return maximumBill;
-	}
-	public void setMaximumBill(int maximumBill) {
-		this.maximumBill = mainCorridors.size()*15+subCorridors.size()*10;
 	}
 	public List<MainCorridor> getMainCorridors() {
 		return mainCorridors;
 	}
-	public void setMainCorridors(List<MainCorridor> mainCorridors) {
-		this.mainCorridors = mainCorridors;
-	}
 	public List<SubCorridor> getSubCorridors() {
 		return subCorridors;
 	}
-	public void setSubCorridors(List<SubCorridor> subCorridors) {
-		this.subCorridors = subCorridors;
-	}
-	
-	
 }

@@ -1,14 +1,24 @@
 package com.sahaj.soft.hotel_automation.model;
 
+import com.sahaj.soft.hotel_automation.commands.Commands;
+
 public class SensorModel {
 	
-	public Hotel hotel;
 	public Floor floor;
-	public Hotel getHotel() {
-		return hotel;
+	public Electronics device;
+	public Commands command;
+	
+	public Electronics getDevice() {
+		return device;
 	}
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
+	public void setDevice(Electronics device) {
+		this.device = device;
+	}
+	public Commands getCommand() {
+		return command;
+	}
+	public void setCommand(Commands command) {
+		this.command = command;
 	}
 	public Floor getFloor() {
 		return floor;

@@ -13,7 +13,7 @@ public class OnState implements DeviceState{
     //Business logic and state transition
     public void updateState(StateContext ctx) 
     {
-        System.out.println("Package is shipped !!");
+        System.out.println("Switching off the device");
         ctx.setCurrentState(OffState.instance());
     }
 

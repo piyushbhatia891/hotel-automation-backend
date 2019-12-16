@@ -1,22 +1,21 @@
 package com.sahaj.soft.hotel_automation.commands;
 
 import com.sahaj.soft.hotel_automation.events.EventPublishers;
-import com.sahaj.soft.hotel_automation.model.Hotel;
-import com.sahaj.soft.hotel_automation.model.Light;
+import com.sahaj.soft.hotel_automation.model.Electronics;
 import com.sahaj.soft.hotel_automation.model.SensorModel;
-import com.sahaj.soft.hotel_automation.states.OffState;
 import com.sahaj.soft.hotel_automation.states.OnState;
 
 public class LightCommands implements ICommand{
 
 	SensorModel sensorModel;
-	Light light;
+	Electronics device;
 	Commands command;
 	EventPublishers publishers=new EventPublishers();
-	public LightCommands(SensorModel model,Commands command){
+	public LightCommands(SensorModel model){
 		super();
-		this.command=command;
+		this.command=model.getCommand();
 		this.sensorModel=model;
+		this.device=sensorModel.getDevice();
 	}
 	public void command() {
 		System.out.println("Light related commands");
@@ -45,7 +44,7 @@ public class LightCommands implements ICommand{
 			int maxBill=sensorModel.getFloor().getMainCorridors().size()*15+
 					sensorModel.getFloor().getSubCorridors().size()*10;
 			if(mainCorridorPower+subCorridorPower<maxBill)
-				light.swicthOn();
+				device.swicthOn();
 			else
 				sensorModel.getFloor().getSubCorridors().stream()
 				.findAny()
@@ -60,7 +59,7 @@ public class LightCommands implements ICommand{
 			publishers.notifyUpdate(sensorModel);
 			break;
 		case SWITCH_OFF:
-			light.switchOff();
+			device.switchOff();
 			break;
 		default:
 			break;
