@@ -11,7 +11,7 @@ public class BillSubscriber implements Observer {
 		this.commonUtils=new CommonUtilsImpl();
 	}
 	public void update(SensorModel sensorModel) {
-		System.out.println("Calculating bill="+ commonUtils.calculateTotalBill(sensorModel));
+		System.out.println("Total bill can be calculated");
 	}
 	
 
