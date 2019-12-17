@@ -26,6 +26,7 @@ OOPS principle followed
 5.open closed principle followed a bit(but can be followed in detail if project is exposed as a jar by maven plugin)
 
 Packages details;-
+App.java is the main class from where the execution starts.
 1.com.sahaj.soft.hotel_automation.utils:- Contains common functions and can be used for others
 2. com.sahaj.soft.hotel_automation:- Contains controllers for handling the first input which can be changed as exposed as rest api later on.
 3. com.sahaj.soft.hotel_automation.commands:- Contains all command related interfaces to extend functionality for different devices.
